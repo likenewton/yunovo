@@ -15,7 +15,7 @@
         <el-form-item>
           <el-button type="primary">查询</el-button>
           <el-button type="primary" @click="createDoiApp">新建DOI应用</el-button>
-          <el-button type="primary">新建XML应用</el-button>
+          <el-button type="primary" @click="createXmlApp">新建XML应用</el-button>
           <el-button type="danger">批量删除</el-button>
         </el-form-item>
       </el-form>
@@ -84,6 +84,11 @@ export default {
     createDoiApp() {
       this.$router.push({
         name: 'DOICREATE'
+      })
+    },
+    createXmlApp() {
+      this.$router.push({
+        name: 'XMLCREATE'
       })
     }
   },

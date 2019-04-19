@@ -46,7 +46,8 @@
       <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[5, 10, 15, 20]" :page-size="pagesize" layout="total, sizes, prev, pager, next, jumper" :total="tableData.length" class="clearfix">
       </el-pagination>
     </el-card>
-    <el-dialog title="新增" :visible.sync="dialogFormVisible" width='33%'>
+    <el-dialog :visible.sync="dialogFormVisible" width='33%'>
+      <span slot="title">新增</span>
       <el-form :model="addForm" label-width="80px">
         <el-form-item label="开关代码">
           <el-input v-model="addForm.code" autocomplete="off"></el-input>
@@ -188,10 +189,8 @@ export default {
   }
 }
 
-// .el-dialog {
-//   .el-select {
-//     width: 100%;
-//   }
+// .el-dialog__header {
+//   border-bottom: 1px solid #EBEEF5;
 // }
 
 </style>

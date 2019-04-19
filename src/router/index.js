@@ -8,6 +8,7 @@ import Orginfo from '@/components/operation_platform/orginfo.vue'
 import Ocpush from '@/components/operation_platform/ocpush.vue'
 import Doilist from '@/components/operation_platform/doilist.vue'
 import Doicreate from '@/components/operation_platform/doicreate.vue'
+import Xmlcreate from '@/components/operation_platform/xmlcreate.vue'
 
 Vue.use(Router)
 
@@ -52,6 +53,10 @@ let router = new Router({
         path: 'doicreate',
         name: 'DOICREATE',
         component: Doicreate
+      }, {
+        path: 'xmlcreate',
+        name: 'XMLCREATE',
+        component: Xmlcreate
       }]
     }]
   }]

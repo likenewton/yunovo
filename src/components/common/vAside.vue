@@ -40,7 +40,7 @@ export default {
     testFn() {
       if (['OCINFO', 'ORGINFO', 'OCPUSH'].includes(this.routeName)) {
         this.SET_ASIDEFLAG({ asideFlag: '终端开关管理' })
-      } else if (['DOILIST', 'DOICREATE'].includes(this.routeName)) {
+      } else if (['DOILIST', 'DOICREATE', 'XMLCREATE'].includes(this.routeName)) {
         this.SET_ASIDEFLAG({ asideFlag: 'DOI应用管理' })
       }
     }

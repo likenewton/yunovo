@@ -66,7 +66,7 @@
         <span style="color: #606266; font-size: 14px">用于配置设备触发DOI后未关闭弹窗时ACC OFF是否强制关闭弹窗</span>
       </el-form-item>
       <el-form-item>
-        <el-button type="warning">返回</el-button>
+        <el-button>返回</el-button>
         <el-button type="primary">保存</el-button>
       </el-form-item>
     </el-form>
