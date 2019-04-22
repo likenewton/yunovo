@@ -1,44 +1,67 @@
 <template>
   <div>
-    <el-card class="box-card" style="margin-bottom: 20px">
+    <el-card class="box-card" style="margin-bottom: 20px" shadow="never">
       <el-form :inline="true" :model="formInline" class="demo-form-inline">
-        <el-form-item label="开关代码">
-          <el-input v-model="formInline.code" placeholder="开关代码"></el-input>
+        <el-form-item label="DOI应用分发计划">
+          <el-input v-model="formInline.doi_plan" placeholder="DOI应用分发计划"></el-input>
         </el-form-item>
-        <el-form-item label="开关描述">
-          <el-input v-model="formInline.des" placeholder="开关描述"></el-input>
+        <el-form-item label="DOI应用">
+          <el-input v-model="formInline.doi_app" placeholder="DOI应用"></el-input>
         </el-form-item>
-        <el-form-item label="开关状态">
-          <el-select v-model="formInline.effect" placeholder="开关状态">
+        <el-form-item label="DOI应用类型">
+          <el-select v-model="formInline.doi_type" placeholder="DOI应用类型">
             <el-option label="全部" value="0"></el-option>
-            <el-option label="有效" value="1"></el-option>
-            <el-option label="无效" value="2"></el-option>
+            <el-option label="MVP应用" value="1"></el-option>
+            <el-option label="客制化应用" value="2"></el-option>
+            <el-option label="业务应用" value="3"></el-option>
+            <el-option label="系统应用" value="4"></el-option>
+            <el-option label="自生成应用" value="5"></el-option>
           </el-select>
         </el-form-item>
+        <el-form-item label="分发状态">
+          <el-select v-model="formInline.dis_status" placeholder="分发状态">
+            <el-option label="全部" value="0"></el-option>
+            <el-option label="待发布" value="1"></el-option>
+            <el-option label="待分发" value="2"></el-option>
+            <el-option label="分发中" value="3"></el-option>
+            <el-option label="已结束" value="4"></el-option>
+            <el-option label="暂停" value="5"></el-option>
+            <el-option label="测试中" value="6"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="分发时间">
+          <el-date-picker v-model="formInline.dis_date" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
+        </el-form-item>
         <el-form-item>
+          <el-button type="warning" icon="el-icon-search" size="mini">重置</el-button>
           <el-button type="primary" icon="el-icon-search" size="mini">查询</el-button>
         </el-form-item>
       </el-form>
     </el-card>
-    <el-card class="box-card clearfix">
+    <el-card class="box-card clearfix" shadow="never">
       <el-button-group style="margin-bottom: 10px">
-        <el-button size="mini" type="primary" icon="el-icon-circle-plus-outline" @click="dialogFormVisible = true">新增</el-button>
+        <el-button size="mini" type="primary" icon="el-icon-circle-plus-outline" @click="createDisPlan">新建分发计划</el-button>
+        <el-button size="mini" type="primary" icon="el-icon-tickets">发布计划</el-button>
+        <el-button size="mini" type="primary" icon="el-icon-info">启动/停用</el-button>
+        <el-button size="mini" type="primary" icon="el-icon-refresh">刷新</el-button>
         <el-button size="mini" type="danger" icon="el-icon-delete" @click="batchDelete">批量删除</el-button>
       </el-button-group>
       <el-table ref="multipleTable" @selection-change="changeFun" :data="curTableData" border :default-sort="{prop: 'date', order: 'descending'}">
         <el-table-column fixed="left" type="selection" width="55"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="code" label="开关代码" min-width="100"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="oc_type" label="开关类型" min-width="100"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="des" label="描述" min-width="250"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="val_type" label="值类型"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="oc_val" label="开关值"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="effect" label="是否有效" show-overflow-tooltip min-width="80"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="create" label="创建者"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="c_date" label="创建时间" sortable min-width="180"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="modi_p" label="最近一次修改者" min-width="140"></el-table-column>
-        <el-table-column show-overflow-tooltip prop="modi_date" label="最近一次修改时间" sortable width="200"></el-table-column>
-        <el-table-column show-overflow-tooltip fixed="right" label="操作" width="100">
+        <el-table-column show-overflow-tooltip label="DOI应用分发计划" min-width="150">
           <template slot-scope="scope">
+            <el-button type="text" size="mini">{{scope.row.doi_plan}}</el-button>
+          </template>
+        </el-table-column>
+        <el-table-column show-overflow-tooltip prop="doi_app" label="DOI应用" min-width="150"></el-table-column>
+        <el-table-column show-overflow-tooltip prop="doi_type" label="DOI应用类型" min-width="150"></el-table-column>
+        <el-table-column show-overflow-tooltip prop="eq_filter" label="设备筛选器" min-width="120"></el-table-column>
+        <el-table-column show-overflow-tooltip prop="dis_status" label="分发状态" min-width="150"></el-table-column>
+        <el-table-column show-overflow-tooltip prop="dis_date" label="发布时间" show-overflow-tooltip min-width="180" sortable></el-table-column>
+        <el-table-column fixed="right" label="操作" width="200">
+          <template slot-scope="scope">
+            <el-button type="text" size="mini">灰度测试</el-button>
+            <el-button type="text" size="mini">编辑</el-button>
             <el-button type="text" size="mini" @click="singleDelete(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
@@ -86,17 +109,14 @@ export default {
       pagesize: 10,
       currentPage: 1,
       choiceTableDate: [],
-      tableData: Api.STATIC.tableData,
+      tableData: Api.STATIC.tableData4,
       formInline: {
         code: '',
         des: '',
         effect: ''
       },
       addForm: {
-        code: '',
-        oc_type: '',
-        val_type: '',
-        oc_val: ''
+
       },
       dialogFormVisible: false
     }
@@ -161,6 +181,10 @@ export default {
     addNewInfo() {
       // 确定新增
       this.dialogFormVisible = false
+    },
+    // 新建分发计划
+    createDisPlan() {
+      this.$router.push({ name: 'DISPLANCREATE' })
     }
   },
   computed: {
@@ -188,6 +212,12 @@ export default {
     }
   }
 }
+
+.el-date-editor .el-range-separator {
+  width: auto;
+}
+
+
 
 // .el-dialog__header {
 //   border-bottom: 1px solid #EBEEF5;

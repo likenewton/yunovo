@@ -77,5 +77,48 @@ module.exports = {
     effect: '是',
     modi_p: 'newton',
     modi_date: '2019-04-15 19:58:65'
+  }],
+  tableData4: [{
+    id: 0,
+    doi_plan: '0533计划',
+    doi_app: '21321',
+    doi_type: 'MVP应用',
+    eq_filter: '某某设备',
+    dis_status: '代分发',
+    dis_date: '2019-04-20 12:56:41'
+  }, {
+    id: 1,
+    doi_plan: '0533计划',
+    doi_app: '21321',
+    doi_type: 'MVP应用',
+    eq_filter: '某某设备',
+    dis_status: '已暂停',
+    dis_date: '2019-04-20 18:56:41'
+  }],
+  tableData5: [{
+    id: 0,
+    filter_name: '设备1',
+    use_status: '空闲',
+    op_p: 'Newton',
+    up_date: '2019-04-20 14:16:20'
+  }, {
+    id: 1,
+    filter_name: '设备2',
+    use_status: '使用中',
+    op_p: 'Newton',
+    up_date: '2019-04-20 14:16:20'
+  }],
+  tableData6: [{
+    id: 0,
+    doi_name: '设备1',
+    use_status: '空闲',
+    op_p: 'Newton',
+    up_date: '2019-04-20 14:16:20'
+  }, {
+    id: 1,
+    doi_name: '设备2',
+    use_status: '使用中',
+    op_p: 'Newton',
+    up_date: '2019-04-20 14:16:20'
   }]
 }

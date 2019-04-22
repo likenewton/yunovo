@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-card class="box-card" style="margin-bottom: 20px">
+    <el-card class="box-card" style="margin-bottom: 20px" shadow="never">
       <el-form :inline="true" :model="formInline" class="demo-form-inline">
         <el-form-item label="DOI应用">
           <el-input v-model="formInline.doi" placeholder="DOI应用"></el-input>
@@ -13,14 +13,14 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">查询</el-button>
-          <el-button type="primary" @click="createDoiApp">新建DOI应用</el-button>
-          <el-button type="primary" @click="createXmlApp">新建XML应用</el-button>
-          <el-button type="danger">批量删除</el-button>
+          <el-button size="mini" type="primary">查询</el-button>
+          <el-button size="mini" type="primary" @click="createDoiApp">新建DOI应用</el-button>
+          <el-button size="mini" type="primary" @click="createXmlApp">新建XML应用</el-button>
+          <el-button size="mini" type="danger">批量删除</el-button>
         </el-form-item>
       </el-form>
     </el-card>
-    <el-tabs type="border-card">
+    <el-tabs type="border-card" shadow="never">
       <el-tab-pane>
         <span slot="label"><i class="el-icon-picture"></i>MVP应用</span>
         <el-row :gutter="15">

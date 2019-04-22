@@ -1,9 +1,9 @@
 <template>
-  <div class="inner-head">
+  <div class="inner-head">云智易联</h1>
     <i class="el-icon-menu pointer" @click="SET_ASIDECOLLAPSE({asideCollapse: !asideCollapse})"></i>
     <el-dropdown trigger="click" class="pointer fr">
       <span class="el-dropdown-link">
-        Newton<i class="el-icon-arrow-down el-icon--right"></i>
+        Newton<i class="el-icon-caret-bottom el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown" style="width: 250px">
         <el-dropdown-item>Profile</el-dropdown-item>
@@ -13,7 +13,7 @@
       </el-dropdown-menu>
     </el-dropdown>
     <div class="avatar fr"></div>
-    <el-badge :value="12" class="item fr pointer" type="success">
+    <el-badge :value="12" class="item fr pointer" type="danger">
       <i class="el-icon-message"></i>
     </el-badge>
   </div>
@@ -50,16 +50,22 @@ export default {
 <style lang="scss">
 .el-header {
   font-size: 12px;
-  background-color: #EDEDED;
+  background-color: #fff;
   border-bottom: 1px solid #D9DEE4;
   color: #333;
   line-height: 60px;
 
   .inner-head {
+    .favicon-wrapper {
+      display: inline-block;
+      font-size: 22px;
+    }
+
     .el-icon-menu {
       color: #5A738E;
       font-size: 25px;
       vertical-align: sub;
+      margin-left: 20px;
     }
 
     .avatar {

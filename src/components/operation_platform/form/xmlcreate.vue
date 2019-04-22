@@ -33,6 +33,14 @@
         <el-input type="textarea" :rows="15" placeholder="请输入内容" v-model="formInline.xmlContent"></el-input>
       </el-form-item>
       <el-form-item>
+        <span slot="label"><span class="red">*</span> 资源上传</span>
+        <el-upload class="upload-demo" drag action="https://jsonplaceholder.typicode.com/posts/" multiple>
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+          <div class="el-upload__tip" slot="tip">只能上传xml文件</div>
+        </el-upload>
+      </el-form-item>
+      <el-form-item>
         <el-button>返回</el-button>
         <el-button type="success" @click="formatXml">格式化XML</el-button>
         <el-button type="warning" @click="validateXml">验证XML</el-button>

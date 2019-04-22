@@ -2,7 +2,7 @@
   padding-bottom: 100px;
 }
 
-.el-card__body::after, 
+.el-card__body::after,
 .el-card__body::before {
   line-height: 0;
 
@@ -14,3 +14,30 @@
 
   content: '';
 }
+
+.comment {
+	font-size: 14px;
+	color: #858585;
+}
+
+// 样式风格重置
+// .el-button--primary {
+//   background-color: #3cb1ff;
+//   border-color: #3cb1ff;
+// }
+
+// .el-button--danger {
+//   background-color: #ff7477;
+//   border-color: #ff7477;
+// }
+
+// .el-button--warning {
+//   background-color: #ffc267;
+//   border-color: #ffc367;
+// }
+
+// .el-button--success {
+//   background-color: #27da99;
+//   border-color: #27da99;
+// }
+

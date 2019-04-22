@@ -1,16 +1,21 @@
 <template>
-  <el-menu :default-openeds="[asideFlag]" :collapse="asideCollapse" :collapse-transition="false" unique-opened router>
-    <div class="logo-title"><i class="el-icon-info"></i><span class="title-text">Yunovo</span></div>
-    <el-submenu :index="menuItem.title" v-for="menuItem in routes.children" :key="menuItem.name">
-      <template slot="title">
-        <i class="el-icon-message submenu-icon"></i>
-        <span class="title-text">{{menuItem.title}}</span>
-      </template>
-      <el-menu-item-group>
-        <el-menu-item v-if="submenuItem.title" v-for="submenuItem in menuItem.children" :index="submenuItem.path" :key="submenuItem.name" :class="{'is-active': routeName === submenuItem.name}">{{submenuItem.title}}</el-menu-item>
-      </el-menu-item-group>
-    </el-submenu>
-  </el-menu>
+  <el-aside style="width: auto">
+    <el-menu :default-openeds="[asideFlag]" :collapse="asideCollapse" :collapse-transition="true" unique-opened router>
+      <el-submenu :index="menuItem.title" v-for="menuItem in routes.children" :key="menuItem.name">
+        <template slot="title">
+          <i class="el-icon-message submenu-icon"></i>
+          <span class="title-text">{{menuItem.title}}</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item v-if="submenuItem.title" v-for="submenuItem in menuItem.children" :index="submenuItem.path" :key="submenuItem.name" :class="{'is-active': routeName === submenuItem.name}">{{submenuItem.title}}</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <div class="collapse-control pointer" @click="SET_ASIDECOLLAPSE({asideCollapse: !asideCollapse})">
+        <i v-show="!asideCollapse" class="el-icon-arrow-left"></i>
+        <i v-show="asideCollapse" class="el-icon-arrow-right"></i>
+      </div>
+    </el-menu>
+  </el-aside>
 </template>
 <script>
 import { mapState, mapMutations } from 'vuex'
@@ -23,7 +28,6 @@ export default {
       routeName: this.$route.name
     }
   },
-  props: ['activeItem'],
   mounted() {
     this.testFn()
   },
@@ -33,14 +37,18 @@ export default {
       asideFlag: 'asideFlag'
     })
   },
+  mounted() {
+    this.testFn()
+  },
   methods: {
     ...mapMutations([
-      'SET_ASIDEFLAG'
+      'SET_ASIDEFLAG',
+      'SET_ASIDECOLLAPSE'
     ]),
     testFn() {
       if (['OCINFO', 'ORGINFO', 'OCPUSH'].includes(this.routeName)) {
         this.SET_ASIDEFLAG({ asideFlag: '终端开关管理' })
-      } else if (['DOILIST', 'DOICREATE', 'XMLCREATE'].includes(this.routeName)) {
+      } else if (['DOILIST', 'DOICREATE', 'XMLCREATE', 'DOIDISPENSE', 'EQFILTER', 'FILTERCREATE', 'DISPLANCREATE', 'SCENETRI', 'TRICREATE'].includes(this.routeName)) {
         this.SET_ASIDEFLAG({ asideFlag: 'DOI应用管理' })
       }
     }
@@ -68,28 +76,14 @@ export default {
     color: #fff;
   }
 
-  .logo-title {
-    text-align: center;
-    color: #fff;
-    margin: 20px 0;
-
-    .title-text {
-      font-size: 24px;
-    }
-
-    i {
-      font-size: 35px;
-      vertical-align: sub;
-    }
-  }
-
   .title-text {
     margin-left: 8px;
   }
 
   .el-menu {
-    width: 250px;
+    width: 230px;
     border: none;
+    height: 100%;
 
     .el-submenu {
       border-right: 5px solid #2A3F54;
@@ -110,8 +104,10 @@ export default {
     }
 
     .el-menu-item {
+      height: 45px;
+      line-height: 45px;
       &:hover {
-        background: rgba(255, 255, 255, .05);
+        background: #20ba95 !important;
       }
 
       &.is-active {
@@ -122,7 +118,7 @@ export default {
     }
 
     &.el-menu--collapse {
-      width: auto !important;
+      width: 68px;
 
       .title-text {
         display: none;
@@ -131,6 +127,29 @@ export default {
       .submenu-icon {
         font-size: 26px;
       }
+    }
+
+  }
+
+  .collapse-control {
+    position: absolute;
+    width: 100%;
+    padding: 0 20px;
+    bottom: 0;
+    height: 50px;
+    background: rgba(0, 0, 0, .3);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &:hover {
+      i {
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+    i {
+      font-weight: bold;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 

@@ -7,8 +7,15 @@ import Ocinfo from '@/components/operation_platform/ocinfo.vue'
 import Orginfo from '@/components/operation_platform/orginfo.vue'
 import Ocpush from '@/components/operation_platform/ocpush.vue'
 import Doilist from '@/components/operation_platform/doilist.vue'
-import Doicreate from '@/components/operation_platform/doicreate.vue'
-import Xmlcreate from '@/components/operation_platform/xmlcreate.vue'
+import Doidispense from '@/components/operation_platform/doidispense.vue'
+import Eqfilter from '@/components/operation_platform/eqfilter.vue'
+import Scenetri from '@/components/operation_platform/scenetri.vue'
+
+import Doicreate from '@/components/operation_platform/form/doicreate.vue' // 新建doi应用
+import Xmlcreate from '@/components/operation_platform/form/xmlcreate.vue' // 新建xml
+import Filtercreate from '@/components/operation_platform/form/filtercreate.vue' // 新建设备过滤器
+import Displancreate from '@/components/operation_platform/form/displancreate.vue' // 新建分发计划
+import Tricreate from '@/components/operation_platform/form/tricreate.vue' // 新建触发器
 
 Vue.use(Router)
 
@@ -57,6 +64,33 @@ let router = new Router({
         path: 'xmlcreate',
         name: 'XMLCREATE',
         component: Xmlcreate
+      }, {
+        path: 'filtercreate',
+        name: 'FILTERCREATE',
+        component: Filtercreate
+      },{
+        path: 'displancreate',
+        name: 'DISPLANCREATE',
+        component: Displancreate
+      },{
+        path: 'tricreate',
+        name: 'TRICREATE',
+        component: Tricreate
+      }, {
+        path: 'doidispense',
+        name: 'DOIDISPENSE',
+        component: Doidispense,
+        title: 'DOI应用分发'
+      }, {
+        path: 'eqfilter',
+        name: 'EQFILTER',
+        component: Eqfilter,
+        title: '设备筛选器'
+      }, {
+        path: 'scenetri',
+        name: 'SCENETRI',
+        component: Scenetri,
+        title: '场景触发器'
       }]
     }]
   }]
