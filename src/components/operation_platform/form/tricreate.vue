@@ -14,7 +14,18 @@
       </el-form-item>
       <el-form-item>
         <span slot="label"><span class="red">*</span> DOI场景定义</span>
-        
+        <el-select v-model="choiceTri" placeholder="请选择" @change="changeTri" value-key="id">
+          <el-option-group v-for="group in options" :key="group.label" :label="triLabel[group.label]">
+            <el-option v-for="item in group.options" :key="item.id" :label="item.text" :value="item">
+            </el-option>
+          </el-option-group>
+        </el-select>
+        <el-select v-show="choiceTri.value_type" v-model="formInline.a" placeholder="请选择">
+          <el-option label="下拉1" value="0"></el-option>
+          <el-option label="下拉2  " value="1"></el-option>
+        </el-select>
+        <el-input-number v-show="choiceTri.value_type === '1'" size="small" v-model="formInline.count" :min="1"></el-input-number>
+        <span v-show="choiceTri.value_type === '1'" style="display: inline-block;margin-left: 10px">{{choiceTri.dic_unit}}</span>
       </el-form-item>
       <el-form-item>
         <span slot="label"><span class="red">*</span> 场景触发频率</span>
@@ -64,15 +75,50 @@ export default {
         time: '1',
         count: 1,
         fileList: []
-      }
+      },
+      jsonDate: [],
+      triLabel: {
+        '301': '时间',
+        '302': '车况',
+        '303': '天气',
+        '306': '交互行为'
+      },
+      choiceTri: {}
     }
   },
   mounted() {
-
+    // 本地静态数据模拟
+    this.$http.get('../../../../static/json/events.json').then((response) => {
+      this.jsonDate = response.data.data
+    })
   },
   methods: {
     handleChange(file, fileList) {
       this.formInline.fileList = fileList.slice(-3);
+    },
+    changeTri(val) {
+      console.log(val)
+    }
+  },
+  computed: {
+    options() {
+      let options = []
+      let labelArr = [] // 用来存档所有label的数组
+      this.jsonDate.forEach((v) => {
+        let parent_id = v.parent_id
+        let index = labelArr.indexOf(parent_id)
+        if (index > -1) {
+          options[index].options.push(v)
+        } else {
+          labelArr.push(parent_id)
+          options.push({
+            label: parent_id,
+            options: [v]
+          })
+        }
+      })
+      console.log(options)
+      return options
     }
   }
 }
