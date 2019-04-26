@@ -1,16 +1,15 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+
 import 'jquery'
-import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+// import ElementUI from 'element-ui'
+
 import echarts from 'echarts'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
-import axios from 'axios'
+import '../theme/index.css';
+import '../static/iconfont/iconfont.css';
 
 const requireComponent = require.context(
   // 其组件目录的相对路径
@@ -45,7 +44,7 @@ requireComponent.keys().forEach(fileName => {
 
 Vue.prototype.$echarts = echarts
 Vue.prototype.$http = axios
-Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
+// Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
 
 Vue.config.productionTip = false
 

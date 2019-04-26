@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-card class="box-card" style="margin-bottom: 20px">
+    <el-card class="box-card" style="margin-bottom: 20px" shadow="never">
       <el-form :inline="true" :model="formInline" class="demo-form-inline">
         <el-form-item label="开关代码">
           <el-input v-model="formInline.code" placeholder="开关代码"></el-input>
@@ -16,11 +16,11 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" icon="el-icon-search" size="mini">查询</el-button>
+          <el-button type="primary" icon="el-icon-search">查询</el-button>
         </el-form-item>
       </el-form>
     </el-card>
-    <el-card class="box-card clearfix">
+    <el-card class="box-card clearfix" shadow="never">
       <el-button-group style="margin-bottom: 10px">
         <el-button size="mini" type="primary" icon="el-icon-circle-plus-outline" @click="dialogFormVisible = true">新增</el-button>
         <el-button size="mini" type="danger" icon="el-icon-delete" @click="batchDelete">批量删除</el-button>

@@ -25,13 +25,13 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "windows.jQuery": "jquery"
-    })
-  ],
+  // plugins: [
+  //   new webpack.ProvidePlugin({
+  //     $: "jquery",
+  //     jQuery: "jquery",
+  //     "windows.jQuery": "jquery"
+  //   })
+  // ],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -97,5 +97,13 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  externals: {
+    'vue': 'Vue',
+    'vuex': 'Vuex',
+    'jquery': '$',
+    'vue-router': 'VueRouter',
+    'axios': 'axios',
+    'element-ui': 'ElementUI'
+  },
 }

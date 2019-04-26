@@ -1,4 +1,5 @@
 module.exports = {
+  // 获取浏览器信息
   browser() {
     let u = navigator.userAgent
     return {
@@ -61,5 +62,24 @@ module.exports = {
       "msg": errorMessage,
       "error_code": errorCode
     }
+  },
+
+  // 加载动画
+  loading(vue, paras = {
+    lock: true,
+    text: 'Loading',
+    spinner: 'el-icon-loading',
+    background: 'rgba(0, 0, 0, 0.7)'
+  }) {
+    return vue.$loading(paras)
+  },
+
+  getSize() {
+    let size = 'medium'
+    let width = $(window).width()
+    if (width > 1600) size = 'medium'
+    else if (width <= 1600 && width > 1300) size = 'small'
+    else size = 'mini'
+    return size
   }
 }

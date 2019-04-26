@@ -7,14 +7,14 @@
       <v-aside></v-aside>
       <el-container>
         <el-main class="small-scroll">
-<!--           <v-breadcrumb></v-breadcrumb> -->
           <div class="main-inner">
+            <v-breadcrumb></v-breadcrumb>
             <router-view></router-view>
+            <el-footer height="50px">
+              <v-footer></v-footer>
+            </el-footer>
           </div>
         </el-main>
-        <el-footer height="50px">
-          <v-footer></v-footer>
-        </el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -32,11 +32,17 @@ export default {
 </script>
 <style lang="scss">
 .el-main {
-  padding: 0;
+  position: relative;
+  padding: 20px 20px 0;
   background: #f5f5f5;
+  overflow-x: hidden;
+  height: 100%;
+
   .main-inner {
-    padding: 20px;
-    height: 100%;
+    position: relative;
+    padding: 0 0 50px;
+    width: 100%;
+    min-height: 100%;
   }
 }
 

@@ -33,8 +33,8 @@
           <el-date-picker v-model="formInline.dis_date" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="warning" icon="el-icon-search" size="mini">重置</el-button>
-          <el-button type="primary" icon="el-icon-search" size="mini">查询</el-button>
+          <el-button type="warning" icon="el-icon-search">重置</el-button>
+          <el-button type="primary" icon="el-icon-search">查询</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -184,7 +184,7 @@ export default {
     },
     // 新建分发计划
     createDisPlan() {
-      this.$router.push({ name: 'DISPLANCREATE' })
+      this.$router.push({ name: 'displancreate' })
     }
   },
   computed: {

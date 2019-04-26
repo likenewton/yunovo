@@ -13,8 +13,8 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="warning" icon="el-icon-search" size="mini">重置</el-button>
-          <el-button type="primary" icon="el-icon-search" size="mini">查询</el-button>
+          <el-button type="warning" icon="el-icon-search">重置</el-button>
+          <el-button type="primary" icon="el-icon-search">查询</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -77,7 +77,7 @@ export default {
     },
     filterCreate() {
       this.$router.push({
-        name: 'FILTERCREATE'
+        name: 'filtercreate'
       })
     },
     // 单项删除
@@ -132,7 +132,7 @@ export default {
     },
     // 新建分发计划
     createDisPlan() {
-      this.$router.push({ name: 'DISPLANCREATE' })
+      this.$router.push({ name: 'displancreate' })
     }
   },
   computed: {
